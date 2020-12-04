@@ -25,30 +25,6 @@ async function initUsersModel(sequelize : Sequelize) {
       });
 }
 
-class DModel extends Model{};
-
-async function initDModel(sequelize : Sequelize) {
-    DModel.init({
-        id: {
-          primaryKey : true,
-          type : DataTypes.UUID,
-          defaultValue : UUIDV4,
-          allowNull : false
-        },
-        d: {
-          type : DataTypes.STRING,
-        }
-      }, {
-        sequelize,
-        modelName : "As_Ds",
-        name : {
-          plural : "d",
-          singular : "d"
-        },
-        timestamps : false
-      });
-}
-
 export class AModel extends Model{};
 
 async function initAModel(sequelize : Sequelize) {
@@ -71,6 +47,30 @@ async function initAModel(sequelize : Sequelize) {
         name : {
           plural : "a",
           singular : "a"
+        },
+        timestamps : false
+      });
+}
+
+class DModel extends Model{};
+
+async function initDModel(sequelize : Sequelize) {
+    DModel.init({
+        id: {
+          primaryKey : true,
+          type : DataTypes.UUID,
+          defaultValue : UUIDV4,
+          allowNull : false
+        },
+        d: {
+          type : DataTypes.STRING,
+        }
+      }, {
+        sequelize,
+        modelName : "As_Ds",
+        name : {
+          plural : "d",
+          singular : "d"
         },
         timestamps : false
       });
