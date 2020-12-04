@@ -120,6 +120,8 @@ testConnection().then(() => initModels())
                 .then(() => testQueries());
 
 async function testQueries() {
+
+  //This request returns an empty record
   let res = await UserModel.findAll({
     //@ts-ignore
     model: UserModel,
@@ -135,6 +137,25 @@ async function testQueries() {
       }]
     }]
   })
+
+  //This request returns {id : ..., d : {...}}
+  /*let res = await UserModel.findAll({
+    //@ts-ignore
+    model: UserModel,
+    attributes : [],
+    //@ts-ignore
+    include: [{
+      model : AModel,
+      attributes : ["id"],
+      include : [{
+        model : DModel,
+        //@ts-ignore
+        attributes: {all : true}
+      }]
+    }]
+  })
+  */
+
   //@ts-ignore
   console.log(res[0].toJSON())
 }
